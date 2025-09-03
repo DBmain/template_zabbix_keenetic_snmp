@@ -1,0 +1,488 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>7.4</version>
+    <template_groups>
+        <template_group>
+            <uuid>7df96b18c230490a9a0a9e2307226338</uuid>
+            <name>Templates</name>
+        </template_group>
+    </template_groups>
+    <templates>
+        <template>
+            <uuid>624cc836e4ae4d489d60257f09907a13</uuid>
+            <template>SNMP Keenetic</template>
+            <name>SNMP Keenetic</name>
+            <description>## Overview
+
+A simple template for monitoring Keenetic with KeeneticOS firmware for monitoring network activity. Tested for Keenetic Giga KN-1012 and Keenetic Giga III.  
+
+
+
+
+## Author
+
+Ymnuk
+Modified by DBmain</description>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <items>
+                <item>
+                    <uuid>3e3fdf979f47412cb4c36c4b2df9d5d2</uuid>
+                    <name>Device Model</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.2.1.47.1.1.1.1.13</snmp_oid>
+                    <key>devModel</key>
+                    <delay>24h</delay>
+                    <value_type>TEXT</value_type>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Device Overview</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>a622eae9d7884f8095cce9498a30c0ab</uuid>
+                    <name>Device Serial Number</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.2.1.47.1.1.1.1.11</snmp_oid>
+                    <key>devSerial</key>
+                    <delay>24h</delay>
+                    <value_type>TEXT</value_type>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>Device Overview</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>ac699221ee344705bfaa6d9c41b9127d</uuid>
+                    <name>System Memory Available</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.2021.4.6.0</snmp_oid>
+                    <key>sysAvailMem</key>
+                    <delay>60</delay>
+                    <history>7d</history>
+                    <units>B</units>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>1024</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>System Overview</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>5c9562440a5a452daf2037e1bf4552e9</uuid>
+                    <name>System Description</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.2.1.1.1.0</snmp_oid>
+                    <key>sysDescr</key>
+                    <delay>3600</delay>
+                    <history>7d</history>
+                    <value_type>TEXT</value_type>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>System Overview</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>d61d108e294d4851be014894442bd96b</uuid>
+                    <name>System Memory Total</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>.1.3.6.1.4.1.2021.4.5.0</snmp_oid>
+                    <key>sysMem</key>
+                    <delay>3600</delay>
+                    <history>7d</history>
+                    <units>B</units>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>1024</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>System Overview</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>1bd703c31415429cb3446a6ba1c9a1c7</uuid>
+                    <name>System Name</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.2.1.1.5.0</snmp_oid>
+                    <key>sysName</key>
+                    <delay>60</delay>
+                    <history>7d</history>
+                    <value_type>TEXT</value_type>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>System Overview</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>922d6fe3285346f8a63f0311ac947291</uuid>
+                    <name>System Uptime</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>1.3.6.1.2.1.1.3.0</snmp_oid>
+                    <key>sysUptime</key>
+                    <delay>60</delay>
+                    <history>7d</history>
+                    <units>uptime</units>
+                    <preprocessing>
+                        <step>
+                            <type>MULTIPLIER</type>
+                            <parameters>
+                                <parameter>0.01</parameter>
+                            </parameters>
+                        </step>
+                    </preprocessing>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>System Overview</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>aa111fce0810441f91b811521051736d</uuid>
+                    <name>System Memory Used</name>
+                    <type>CALCULATED</type>
+                    <key>sysUsedMem</key>
+                    <delay>60</delay>
+                    <history>7d</history>
+                    <units>B</units>
+                    <params>last(//sysMem)-last(//sysAvailMem)</params>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>System Overview</value>
+                        </tag>
+                    </tags>
+                </item>
+                <item>
+                    <uuid>b674bd589b4843f7bc7247b106263db9</uuid>
+                    <name>System Memory Used Percent</name>
+                    <type>CALCULATED</type>
+                    <key>sysUsedMemPercent</key>
+                    <delay>60</delay>
+                    <history>7d</history>
+                    <units>%</units>
+                    <params>100*(last(//sysUsedMem)/last(//sysMem))</params>
+                    <tags>
+                        <tag>
+                            <tag>Application</tag>
+                            <value>System Overview</value>
+                        </tag>
+                    </tags>
+                    <triggers>
+                        <trigger>
+                            <uuid>07ba17073b3448cdb5409d7c40f6fc3b</uuid>
+                            <expression>min(/SNMP Keenetic/sysUsedMemPercent,5m)&gt;75</expression>
+                            <name>High memory utilization (&gt;75%)</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                        <trigger>
+                            <uuid>8404aae398894950826cfef6ddbe99cb</uuid>
+                            <expression>min(/SNMP Keenetic/sysUsedMemPercent,5m)&gt;90</expression>
+                            <name>Very high memory utilization (&gt;90%)</name>
+                            <priority>HIGH</priority>
+                        </trigger>
+                    </triggers>
+                </item>
+            </items>
+            <discovery_rules>
+                <discovery_rule>
+                    <uuid>e1e37d3a706c4aa8b9a9ed131c9cd61c</uuid>
+                    <name>Network Interfaces</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>discovery[{#IFDESCR}, 1.3.6.1.2.1.2.2.1.2]</snmp_oid>
+                    <key>ifDescr</key>
+                    <delay>60</delay>
+                    <lifetime>30d</lifetime>
+                    <enabled_lifetime_type>DISABLE_NEVER</enabled_lifetime_type>
+                    <description>You may also consider using IF-MIB::ifType or IF-MIB::ifAlias for discovery depending on your filtering needs.
+
+{$SNMP_COMMUNITY} is a global macro.</description>
+                    <item_prototypes>
+                        <item_prototype>
+                            <uuid>e46832a889a44841a55b614ebaa079e2</uuid>
+                            <name>{#IFDESCR} Administration status</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.2.1.2.2.1.7.{#SNMPINDEX}</snmp_oid>
+                            <key>ifAdminStatus[{#IFDESCR}]</key>
+                            <delay>60</delay>
+                            <history>7d</history>
+                            <valuemap>
+                                <name>ZyXEL NDMS Status</name>
+                            </valuemap>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Administrator Status</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>e3e2f5fb8edb41499bbba11755694455</uuid>
+                            <name>{#IFDESCR} Incoming</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.2.1.2.2.1.10.{#SNMPINDEX}</snmp_oid>
+                            <key>ifInOctets[{#IFDESCR}]</key>
+                            <delay>10</delay>
+                            <history>7d</history>
+                            <units>bps</units>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                </step>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <parameters>
+                                        <parameter>8</parameter>
+                                    </parameters>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Network</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>c0af731ebcb940eaa981e3034eb0f2e5</uuid>
+                            <name>{#IFDESCR} Operation status</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.2.1.2.2.1.8.{#SNMPINDEX}</snmp_oid>
+                            <key>ifOperStatus[{#IFDESCR}]</key>
+                            <delay>60</delay>
+                            <history>7d</history>
+                            <valuemap>
+                                <name>ZyXEL NDMS Status</name>
+                            </valuemap>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Operation Status</value>
+                                </tag>
+                            </tags>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>297c2de7abdc422395cee0308f82fd28</uuid>
+                                    <expression>last(/SNMP Keenetic/ifOperStatus[{#IFDESCR}])=2 and (last(/SNMP Keenetic/ifOperStatus[{#IFDESCR}],#1)&lt;&gt;last(/SNMP Keenetic/ifOperStatus[{#IFDESCR}],#2))=1</expression>
+                                    <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                                    <recovery_expression>last(/SNMP Keenetic/ifOperStatus[{#IFDESCR}],#1)&lt;&gt;2</recovery_expression>
+                                    <name>Port {#IFDESCR} is down</name>
+                                    <priority>DISASTER</priority>
+                                    <manual_close>YES</manual_close>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>8ce626ece21a47429b7453cf2703a826</uuid>
+                            <name>{#IFDESCR} Outgoing</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.2.1.2.2.1.16.{#SNMPINDEX}</snmp_oid>
+                            <key>ifOutOctets[{#IFDESCR}]</key>
+                            <delay>10</delay>
+                            <history>7d</history>
+                            <units>bps</units>
+                            <preprocessing>
+                                <step>
+                                    <type>CHANGE_PER_SECOND</type>
+                                </step>
+                                <step>
+                                    <type>MULTIPLIER</type>
+                                    <parameters>
+                                        <parameter>8</parameter>
+                                    </parameters>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Network</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>2580b3e12ef74d1591f15d429eb5d57f</uuid>
+                            <name>{#IFDESCR} Port data received since boot</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.2.1.31.1.1.1.6.{#SNMPINDEX}</snmp_oid>
+                            <key>ifPortDataReceivedSinceBoot[{#IFDESCR}]</key>
+                            <delay>180</delay>
+                            <history>7d</history>
+                            <units>B</units>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Data</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>3f3ff5882ce2448f87813e7f531e531f</uuid>
+                            <name>{#IFDESCR} Port total data received</name>
+                            <type>CALCULATED</type>
+                            <key>ifPortDataReceived[{#IFDESCR}]</key>
+                            <delay>180</delay>
+                            <history>7d</history>
+                            <units>B</units>
+                            <params>last(//ifPortDataReceived[{#IFDESCR}])+(last(//ifPortDataReceivedSinceBoot[{#IFDESCR}],#1)-(last(//ifPortDataReceivedSinceBoot[{#IFDESCR}],#2)*(last(//ifPortDataReceivedSinceBoot[{#IFDESCR}],#1)&gt;=last(//ifPortDataReceivedSinceBoot[{#IFDESCR}],#2))))</params>
+                            <preprocessing>
+                                <step>
+                                    <type>CHECK_NOT_SUPPORTED</type>
+                                    <parameters>
+                                        <parameter>-1</parameter>
+                                    </parameters>
+                                    <error_handler>CUSTOM_VALUE</error_handler>
+                                    <error_handler_params>0</error_handler_params>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Data</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>59cc8fa191a44b6fb7fc148f46155bba</uuid>
+                            <name>{#IFDESCR} Port data sent since boot</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.2.1.31.1.1.1.10.{#SNMPINDEX}</snmp_oid>
+                            <key>ifPortDataSentSinceBoot[{#IFDESCR}]</key>
+                            <delay>180</delay>
+                            <history>7d</history>
+                            <units>B</units>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Data</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>717e95c4ac46401c9f01fa5e64989313</uuid>
+                            <name>{#IFDESCR} Port total data sent</name>
+                            <type>CALCULATED</type>
+                            <key>ifPortDataSent[{#IFDESCR}]</key>
+                            <delay>180</delay>
+                            <history>7d</history>
+                            <units>B</units>
+                            <params>last(//ifPortDataSent[{#IFDESCR}])+(last(//ifPortDataSentSinceBoot[{#IFDESCR}],#1)-(last(//ifPortDataSentSinceBoot[{#IFDESCR}],#2)*(last(//ifPortDataSentSinceBoot[{#IFDESCR}],#1)&gt;=last(//ifPortDataSentSinceBoot[{#IFDESCR}],#2))))</params>
+                            <preprocessing>
+                                <step>
+                                    <type>CHECK_NOT_SUPPORTED</type>
+                                    <parameters>
+                                        <parameter>-1</parameter>
+                                    </parameters>
+                                    <error_handler>CUSTOM_VALUE</error_handler>
+                                    <error_handler_params>0</error_handler_params>
+                                </step>
+                            </preprocessing>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Data</value>
+                                </tag>
+                            </tags>
+                        </item_prototype>
+                        <item_prototype>
+                            <uuid>9f6f9ecada8249a2924ffe020e78ae5a</uuid>
+                            <name>{#IFDESCR} Port speed</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>.1.3.6.1.2.1.2.2.1.5.{#SNMPINDEX}</snmp_oid>
+                            <key>ifPortSpeed[{#IFDESCR}]</key>
+                            <delay>60</delay>
+                            <history>7d</history>
+                            <units>bps</units>
+                            <tags>
+                                <tag>
+                                    <tag>Application</tag>
+                                    <value>Port Speed</value>
+                                </tag>
+                            </tags>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <uuid>910ccfd96e4f4fdcbcda2352c6eee25f</uuid>
+                                    <expression>(last(/SNMP Keenetic/ifPortSpeed[{#IFDESCR}]) &lt; last(/SNMP Keenetic/ifPortSpeed[{#IFDESCR}], #2)) and last(/SNMP Keenetic/ifPortSpeed[{#IFDESCR}]) &gt; 0</expression>
+                                    <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                                    <recovery_expression>last(/SNMP Keenetic/ifPortSpeed[{#IFDESCR}]) &gt; last(/SNMP Keenetic/ifPortSpeed[{#IFDESCR}], #2)</recovery_expression>
+                                    <name>Port {#IFDESCR} changed to lower speed than before</name>
+                                    <opdata>last(/SNMP Keenetic/ifPortSpeed[{#IFDESCR}])</opdata>
+                                    <priority>HIGH</priority>
+                                    <manual_close>YES</manual_close>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                    </item_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <uuid>965ca5ad3b2a42f19f51bb6d853056e3</uuid>
+                            <name>{#IFDESCR}</name>
+                            <graph_items>
+                                <graph_item>
+                                    <color>1A7C11</color>
+                                    <item>
+                                        <host>SNMP Keenetic</host>
+                                        <key>ifInOctets[{#IFDESCR}]</key>
+                                    </item>
+                                </graph_item>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <color>F63100</color>
+                                    <item>
+                                        <host>SNMP Keenetic</host>
+                                        <key>ifOutOctets[{#IFDESCR}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                </discovery_rule>
+            </discovery_rules>
+            <valuemaps>
+                <valuemap>
+                    <uuid>549bf4f6cf034a2a8726b4a104b9c99c</uuid>
+                    <name>ZyXEL NDMS Status</name>
+                    <mappings>
+                        <mapping>
+                            <value>1</value>
+                            <newvalue>up</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>2</value>
+                            <newvalue>down</newvalue>
+                        </mapping>
+                        <mapping>
+                            <value>3</value>
+                            <newvalue>testing</newvalue>
+                        </mapping>
+                    </mappings>
+                </valuemap>
+            </valuemaps>
+        </template>
+    </templates>
+</zabbix_export>
